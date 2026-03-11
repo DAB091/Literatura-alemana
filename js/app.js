@@ -143,6 +143,20 @@ async function initIndex() {
       // Añadimos la tarjeta al contenedor
       container.appendChild(card);
     });
+    // Añadimos el acceso a la sección de gramática al final de la página de inicio
+const grammarLink = document.createElement('div');
+grammarLink.className = 'card';
+grammarLink.innerHTML = `
+  <div class="card-initial">G</div>
+  <div class="card-title">Gramática</div>
+  <div class="card-meta">Referencia · A1 – B1</div>
+  <div class="card-desc">Consulta los conceptos gramaticales esenciales para leer y comprender el alemán clásico de Goethe.</div>
+  <span class="card-arrow">→</span>
+`;
+grammarLink.addEventListener('click', () => {
+  window.location.href = 'grammar.html';
+});
+container.appendChild(grammarLink);
 
   } catch (err) {
     // Si ocurre cualquier error al cargar o procesar, lo mostramos en pantalla
@@ -675,7 +689,114 @@ let attemptCount = 0;              // Datos del ejercicio actual
     wrapper.innerHTML = `<div class="error-message">Error al cargar ejercicios: ${err.message}</div>`;
   }
 }
+/* ══════════════════════════════════════════════════════════
+   PÁGINA: GRAMMAR (grammar.html)
+   Carga y renderiza los módulos gramaticales desde grammar.json.
+   Cada módulo puede contener bloques de tipo: text, table, example.
+   ══════════════════════════════════════════════════════════ */
 
+/**
+ * Renderiza un bloque individual según su tipo.
+ * Recibe un objeto de contenido y devuelve una cadena HTML lista para insertar.
+ *
+ * @param {Object} block - Bloque de contenido con propiedad "type".
+ * @returns {string} HTML del bloque renderizado.
+ */
+function renderGrammarBlock(block) {
+  switch (block.type) {
+
+    case 'text':
+      // Párrafo de explicación gramatical
+      return `<p class="grammar-text">${block.text}</p>`;
+
+    case 'table':
+      // Tabla con encabezados y filas dinámicas
+      const headers = block.headers
+        .map(h => `<th>${h}</th>`)
+        .join('');
+      const rows = block.rows
+        .map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`)
+        .join('');
+      return `
+        <div class="grammar-table-wrapper">
+          <table class="grammar-table">
+            <thead><tr>${headers}</tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>`;
+
+    case 'example':
+      // Ejemplo destacado: frase en alemán + traducción al español
+      return `
+        <div class="grammar-example">
+          <span class="grammar-example-de">${block.german}</span>
+          <span class="grammar-example-es">${block.spanish}</span>
+        </div>`;
+
+    default:
+      // Tipo desconocido: lo ignoramos silenciosamente
+      return '';
+  }
+}
+
+/**
+ * Inicializa la página de gramática.
+ * Carga grammar.json, itera sobre los módulos y genera el HTML de cada uno.
+ * Cada módulo agrupa sus bloques de contenido en una tarjeta visual.
+ */
+async function initGrammar() {
+  // Buscamos el contenedor principal declarado en grammar.html
+  const container = document.getElementById('grammar-container');
+  if (!container) return;
+
+  // Mostramos indicador de carga mientras llega el JSON
+  container.innerHTML = '<div class="loading">Cargando gramática</div>';
+
+  // Breadcrumb: Inicio > Gramática
+  setBreadcrumb([
+    { label: 'Inicio',    href: 'index.html' },
+    { label: 'Gramática', href: 'grammar.html' }
+  ]);
+
+  try {
+    // Cargamos el archivo con todos los módulos gramaticales
+    const modules = await fetchJSON('data/grammar.json');
+
+    container.innerHTML = '';
+
+    // Iteramos sobre cada módulo y construimos su tarjeta
+    modules.forEach(module => {
+
+      // Renderizamos todos los bloques de contenido del módulo
+      const blocksHTML = module.content
+        .map(block => renderGrammarBlock(block))
+        .join('');
+
+      // Construimos la tarjeta completa del módulo
+      const card = document.createElement('div');
+      card.className = 'grammar-card';
+      card.innerHTML = `
+        <div class="grammar-card-header">
+          <h2 class="grammar-card-title">${module.title}</h2>
+          <span class="grammar-card-level">${module.level}</span>
+        </div>
+        <div class="grammar-card-body">
+          ${blocksHTML}
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+
+    // Si el JSON existe pero está vacío, avisamos al usuario
+    if (modules.length === 0) {
+      container.innerHTML = '<p class="loading">No hay módulos de gramática disponibles.</p>';
+    }
+
+  } catch (err) {
+    container.innerHTML = `<div class="error-message">Error al cargar gramática: ${err.message}</div>`;
+  }
+}
 
 /* ══════════════════════════════════════════════════════════
    ROUTER — Inicialización según la página actual
@@ -694,4 +815,5 @@ document.addEventListener('DOMContentLoaded', () => {
   if (page === 'books')    initBooks();    // books.html    → obras de un autor
   if (page === 'levels')   initLevels();   // levels.html   → niveles de una obra
   if (page === 'exercise') initExercise(); // exercise.html → ejercicios de un nivel
+  if (page === 'grammar')  initGrammar();
 });

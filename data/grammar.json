@@ -1,0 +1,198 @@
+[
+  {
+    "id": "personal_pronouns",
+    "title": "Pronombres personales",
+    "level": "A1",
+    "content": [
+      {
+        "type": "text",
+        "text": "Los pronombres personales indican quién realiza la acción."
+      },
+      {
+        "type": "table",
+        "headers": ["Alemán", "Español"],
+        "rows": [
+          ["ich", "yo"],
+          ["du", "tú"],
+          ["er", "él"],
+          ["sie", "ella"],
+          ["es", "ello"],
+          ["wir", "nosotros"],
+          ["ihr", "ustedes"],
+          ["sie", "ellos"]
+        ]
+      },
+      {
+        "type": "example",
+        "german": "Ich lerne Deutsch.",
+        "spanish": "Yo aprendo alemán."
+      }
+    ]
+  },
+  {
+    "id": "verb_sein",
+    "title": "El verbo 'sein' (ser / estar)",
+    "level": "A1",
+    "content": [
+      {
+        "type": "text",
+        "text": "El verbo 'sein' es uno de los verbos más importantes del alemán."
+      },
+      {
+        "type": "table",
+        "headers": ["Persona", "Conjugación"],
+        "rows": [
+          ["ich", "bin"],
+          ["du", "bist"],
+          ["er/sie/es", "ist"],
+          ["wir", "sind"],
+          ["ihr", "seid"],
+          ["sie/Sie", "sind"]
+        ]
+      },
+      {
+        "type": "example",
+        "german": "Ich bin Faust.",
+        "spanish": "Yo soy Fausto."
+      }
+    ]
+  },
+  {
+    "id": "present_tense",
+    "title": "Verbos en presente",
+    "level": "A1",
+    "content": [
+      {
+        "type": "text",
+        "text": "Los verbos alemanes cambian según la persona."
+      },
+      {
+        "type": "table",
+        "headers": ["Persona", "lernen (aprender)"],
+        "rows": [
+          ["ich", "lerne"],
+          ["du", "lernst"],
+          ["er/sie/es", "lernt"],
+          ["wir", "lernen"],
+          ["ihr", "lernt"],
+          ["sie", "lernen"]
+        ]
+      },
+      {
+        "type": "example",
+        "german": "Ich lerne Deutsch.",
+        "spanish": "Yo aprendo alemán."
+      }
+    ]
+  },
+  {
+    "id": "sentence_order",
+    "title": "Orden básico de la oración",
+    "level": "A1",
+    "content": [
+      {
+        "type": "text",
+        "text": "El orden básico en alemán es Sujeto + Verbo + Complemento."
+      },
+      {
+        "type": "example",
+        "german": "Faust liest ein Buch.",
+        "spanish": "Fausto lee un libro."
+      },
+      {
+        "type": "text",
+        "text": "El verbo casi siempre está en la segunda posición."
+      }
+    ]
+  },
+  {
+    "id": "articles",
+    "title": "Artículos: der, die, das",
+    "level": "A1",
+    "content": [
+      {
+        "type": "text",
+        "text": "Los sustantivos en alemán tienen género gramatical."
+      },
+      {
+        "type": "table",
+        "headers": ["Artículo", "Género"],
+        "rows": [
+          ["der", "masculino"],
+          ["die", "femenino"],
+          ["das", "neutro"]
+        ]
+      },
+      {
+        "type": "example",
+        "german": "der Mann",
+        "spanish": "el hombre"
+      }
+    ]
+  },
+  {
+    "id": "plural",
+    "title": "Formación del plural",
+    "level": "A1",
+    "content": [
+      {
+        "type": "text",
+        "text": "El plural en alemán puede formarse de varias maneras."
+      },
+      {
+        "type": "table",
+        "headers": ["Singular", "Plural"],
+        "rows": [
+          ["der Mann", "die Männer"],
+          ["das Buch", "die Bücher"],
+          ["die Frau", "die Frauen"]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "accusative",
+    "title": "Caso acusativo",
+    "level": "A2",
+    "content": [
+      {
+        "type": "text",
+        "text": "El acusativo se usa para el objeto directo."
+      },
+      {
+        "type": "table",
+        "headers": ["Nominativo", "Acusativo"],
+        "rows": [
+          ["der Mann", "den Mann"],
+          ["die Frau", "die Frau"],
+          ["das Buch", "das Buch"]
+        ]
+      },
+      {
+        "type": "example",
+        "german": "Ich sehe den Mann.",
+        "spanish": "Yo veo al hombre."
+      }
+    ]
+  },
+  {
+    "id": "faust_language",
+    "title": "Alemán literario en Faust",
+    "level": "A2",
+    "content": [
+      {
+        "type": "text",
+        "text": "El alemán de Goethe usa formas poéticas y un vocabulario más antiguo."
+      },
+      {
+        "type": "example",
+        "german": "Habe nun, ach! Philosophie...",
+        "spanish": "He estudiado, ¡ay!, filosofía..."
+      },
+      {
+        "type": "text",
+        "text": "Las inversiones de orden y el vocabulario arcaico son comunes en la poesía alemana."
+      }
+    ]
+  }
+]
