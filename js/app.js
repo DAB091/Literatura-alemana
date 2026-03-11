@@ -407,12 +407,7 @@ let attemptCount = 0;              // Datos del ejercicio actual
             <span class="progress-count">${index + 1} / ${exercises.length}</span>
           </div>
 
-          <!-- Verso original completo, sin el hueco, como referencia -->
-          <div class="source-line-block">
-            <div class="source-line-label">Verso original</div>
-            <div class="source-line-text">${ex.source_line}</div>
-          </div>
-
+          
           <!-- Tarjeta principal del ejercicio -->
           <div class="exercise-card">
             <!-- El verso con el hueco: antes del hueco + input + después del hueco -->
