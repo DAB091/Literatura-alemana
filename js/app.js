@@ -378,7 +378,10 @@ async function initExercise() {
        Se llama al inicio y cada vez que el usuario avanza.
        ──────────────────────────────────────────────────── */
     function renderExercise(index) {
-      const ex     = exercises[index];               // Datos del ejercicio actual
+      const ex     = exercises[index]; 
+      // Contador de intentos fallidos para este ejercicio.
+// Se reinicia a 0 cada vez que se renderiza un nuevo ejercicio.
+let attemptCount = 0;              // Datos del ejercicio actual
       const isLast = index === exercises.length - 1; // ¿Es el último ejercicio?
 
       // Calculamos el porcentaje de progreso para la barra visual
@@ -504,46 +507,83 @@ async function initExercise() {
          Si es incorrecta: muestra feedback negativo y permite reintentar.
       ────────────────────────────────────────────────── */
       checkBtn.addEventListener('click', () => {
-        const userAnswer = input.value;
+  const userAnswer = input.value;
 
-        // Validación: no permitimos verificar si el campo está vacío
-        if (!userAnswer.trim()) {
-          feedback.textContent = 'Escribe una respuesta antes de verificar.';
-          feedback.className = 'feedback-message';
-          input.focus();
-          return;
-        }
+  // Validación: no permitimos verificar si el campo está vacío
+  if (!userAnswer.trim()) {
+    feedback.textContent = 'Escribe una respuesta antes de verificar.';
+    feedback.className = 'feedback-message';
+    input.focus();
+    return;
+  }
 
-        if (answersMatch(userAnswer, ex.answer)) {
-          // ── Respuesta CORRECTA ──────────────────────────
-          input.classList.remove('incorrect');
-          input.classList.add('correct');
-          input.value = ex.answer; // Mostramos la ortografía correcta (con umlaut si corresponde)
-          input.readOnly = true;   // Bloqueamos el input para que no se pueda editar
+  if (answersMatch(userAnswer, ex.answer)) {
+    // ── Respuesta CORRECTA ──────────────────────────
+    input.classList.remove('incorrect');
+    input.classList.add('correct');
+    input.value = ex.answer;
+    input.readOnly = true;
 
-          feedback.textContent = '✓ Correcto. Sehr gut!';
-          feedback.className = 'feedback-message correct';
+    feedback.textContent = '✓ Correcto. Sehr gut!';
+    feedback.className = 'feedback-message correct';
 
-          checkBtn.style.display = 'none'; // Ocultamos "Verificar"
-          nextBtn.style.display  = '';     // Mostramos "Siguiente" o "Finalizar"
+    checkBtn.style.display = 'none';
+    nextBtn.style.display  = '';
 
-          noteSection.classList.add('visible'); // Revelamos la nota lingüística
-          correctCount++; // Incrementamos el contador de aciertos
+    noteSection.classList.add('visible');
+    correctCount++;
 
-          // Actualizamos la barra de progreso para incluir este ejercicio como completado
-          const pbar = document.querySelector('.progress-bar-fill');
-          if (pbar) pbar.style.width = `${((index + 1) / exercises.length) * 100}%`;
+    // Actualizamos la barra de progreso al completar el ejercicio correctamente
+    const pbar = document.querySelector('.progress-bar-fill');
+    if (pbar) pbar.style.width = `${((index + 1) / exercises.length) * 100}%`;
 
-        } else {
-          // ── Respuesta INCORRECTA ────────────────────────
-          input.classList.remove('correct');
-          input.classList.add('incorrect');
-          feedback.textContent = '✗ No es correcto. Inténtalo de nuevo o consulta una pista.';
-          feedback.className = 'feedback-message incorrect';
-          input.select(); // Seleccionamos el texto del input para facilitar reescribir
-        }
-      });
+  } else {
+    // ── Respuesta INCORRECTA ────────────────────────
 
+    // Incrementamos el contador de intentos fallidos
+    attemptCount++;
+
+    // Calculamos cuántos intentos le quedan al usuario antes de ver la respuesta
+    const attemptsLeft = 5 - attemptCount;
+
+    if (attemptCount >= 5) {
+      // ── Límite de intentos alcanzado: revelamos la respuesta ──
+
+      // Desactivamos el input para que no se pueda seguir escribiendo,
+      // pero lo dejamos visible (no lo ocultamos) para mantener la UI consistente
+      input.disabled = true;
+      input.classList.remove('correct');
+      input.classList.add('incorrect');
+
+      // Mostramos la respuesta correcta debajo del input como texto de feedback
+      feedback.innerHTML = `✗ Respuesta correcta: <strong>${ex.answer}</strong>`;
+      feedback.className = 'feedback-message incorrect';
+
+      // Ocultamos el botón "Verificar" ya que no tiene sentido seguir intentando
+      checkBtn.style.display = 'none';
+
+      // Mostramos el botón "Siguiente" para que el usuario pueda continuar
+      nextBtn.style.display = '';
+
+      // También revelamos la nota lingüística, igual que si hubiera acertado,
+      // para que el ejercicio siga siendo educativo aunque no se haya respondido bien
+      noteSection.classList.add('visible');
+
+    } else {
+      // ── Todavía quedan intentos: mostramos cuántos le quedan ──
+      input.classList.remove('correct');
+      input.classList.add('incorrect');
+
+      // Mensaje diferenciado según si queda un intento (singular) o varios (plural)
+      const intentoTexto = attemptsLeft === 1 ? 'intento' : 'intentos';
+      feedback.textContent = `✗ No es correcto. Te quedan ${attemptsLeft} ${intentoTexto}.`;
+      feedback.className = 'feedback-message incorrect';
+
+      // Seleccionamos el texto del input para facilitar que el usuario lo reescriba
+      input.select();
+    }
+  }
+});
 
       /* ── Evento: clic en "Siguiente" o "Finalizar" ─────
          Si es el último ejercicio, llama a showCompletion() para mostrar
