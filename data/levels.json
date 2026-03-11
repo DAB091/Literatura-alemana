@@ -1,0 +1,12 @@
+[
+  {
+    "id": "faust_zueignung_1",
+    "book_id": "faust",
+    "title": "Zueignung",
+    "subtitle": "Nivel 1 · Dedicatoria",
+    "description": "La Zueignung es el poema de dedicatoria con que Goethe abre el Faust. Escrita en octavas reales, el poeta se dirige a las figuras de su imaginación que vuelven a visitarle tras años de silencio.",
+    "difficulty": "Principiante",
+    "exercise_count": 5,
+    "order": 1
+  }
+]

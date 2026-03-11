@@ -1,0 +1,63 @@
+{
+  "level_id": "faust_zueignung_1",
+  "author": "Johann Wolfgang von Goethe",
+  "book": "Faust Part One",
+  "section": "Zueignung",
+  "exercises": [
+    {
+      "id": "faust_zueignung_1_ex1",
+      "level": 1,
+      "source_line": "Ihr naht euch wieder, schwankende Gestalten,",
+      "text": "Ihr naht euch wieder, ____ Gestalten,",
+      "answer": "schwankende",
+      "hint_context": "El poeta ve cómo las figuras de su imaginación regresan a él. ¿Cómo se mueven o aparecen estas visiones? Son etéreas, inestables, como si flotaran.",
+      "hint_linguistic": "Es un adjetivo participio presente (Partizip I) que modifica a 'Gestalten' (figuras, formas). Concuerda en género, número y caso con el sustantivo.",
+      "hint_letter": "s",
+      "note": "El participio presente como adjetivo es una construcción frecuente en el alemán poético clásico. 'Schwankend' deriva del verbo 'schwanken' (oscilar, vacilar), aquí usado para evocar la naturaleza fantasmal e inestable de las visiones."
+    },
+    {
+      "id": "faust_zueignung_1_ex2",
+      "level": 1,
+      "source_line": "Die früh sich einst dem trüben Blick gezeigt.",
+      "text": "Die früh sich einst dem ____ Blick gezeigt.",
+      "answer": "trüben",
+      "hint_context": "El poeta recuerda cuando estas figuras aparecieron ante su mirada en tiempos pasados. ¿Cómo era esa mirada? Era una mirada cargada de melancolía, nublada por el dolor o la incertidumbre.",
+      "hint_linguistic": "'Trüben' es un adjetivo en caso dativo que modifica a 'Blick' (mirada). En alemán, los adjetivos declinan según el caso del sustantivo que acompañan.",
+      "hint_letter": "t",
+      "note": "'Trüb' significa turbio, sombrío o melancólico. En el alemán clásico y poético es una palabra cargada emocionalmente, usada frecuentemente para describir estados de ánimo oscuros o la falta de claridad interior."
+    },
+    {
+      "id": "faust_zueignung_1_ex3",
+      "level": 1,
+      "source_line": "Versuch ich, was so lang mir abgewöhnt,",
+      "text": "Versuch ich, was so lang mir ____ ,",
+      "answer": "abgewöhnt",
+      "hint_context": "El poeta intenta retomar algo que ha dejado de hacer durante mucho tiempo. El verso habla de un hábito o práctica que fue abandonada. ¿Qué le ha sido quitado o desacostumbrado?",
+      "hint_linguistic": "Es el participio pasado (Partizip II) del verbo separable 'abgewöhnen' (desacostumbrar, quitar el hábito). En esta construcción pasiva-reflexiva, el sujeto experimenta la pérdida del hábito.",
+      "hint_letter": "a",
+      "note": "'Abgewöhnen' es un verbo separable: el prefijo 'ab-' indica alejamiento o privación. En el lenguaje poético del siglo XVIII era común usar participios pasados sin verbo auxiliar explícito, confiando en que el contexto completara el sentido."
+    },
+    {
+      "id": "faust_zueignung_1_ex4",
+      "level": 1,
+      "source_line": "Was ich besitze, seh ich wie im weiten,",
+      "text": "Was ich ____ , seh ich wie im weiten,",
+      "answer": "besitze",
+      "hint_context": "El poeta reflexiona sobre lo que tiene o posee, pero lo ve como algo lejano y difuso, como si lo contemplara desde la distancia. Es un sentimiento de extrañeza ante lo propio.",
+      "hint_linguistic": "Es un verbo en primera persona del singular, presente de indicativo. El sujeto es 'ich' y el objeto es 'was' (lo que). Pertenece a los verbos con prefijo inseparable 'be-'.",
+      "hint_letter": "b",
+      "note": "'Besitzen' (poseer, tener) lleva el prefijo inseparable 'be-', que en el alemán clásico refuerza la idea de dominio o pertenencia plena. La inversión 'seh ich' en lugar de 'ich sehe' es una inversión poética típica del siglo XVIII para mantener el metro del verso."
+    },
+    {
+      "id": "faust_zueignung_1_ex5",
+      "level": 1,
+      "source_line": "Ihr naht euch wieder, schwankende Gestalten,",
+      "text": "Ihr ____ euch wieder, schwankende Gestalten,",
+      "answer": "naht",
+      "hint_context": "Las figuras regresan, se acercan al poeta. El verbo describe el movimiento de aproximación de estas visiones hacia él.",
+      "hint_linguistic": "Verbo en segunda persona del plural (formal/arcaico), presente de indicativo. El sujeto es 'Ihr' (vosotros/ustedes). El infinitivo es 'nahen' (acercarse, aproximarse).",
+      "hint_letter": "n",
+      "note": "'Nahen' es una forma arcaica y poética de 'sich nähern' (acercarse). El uso de 'Ihr' como tratamiento formal en segunda persona del plural es característico del alemán literario del siglo XVIII y da al poema un tono elevado y solemne."
+    }
+  ]
+}

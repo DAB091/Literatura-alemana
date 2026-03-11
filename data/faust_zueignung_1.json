@@ -1,0 +1,24 @@
+You are helping design exercises for a web application used to learn German through literature.
+The goal of the application is to progressively read "Faust Part One" by Johann Wolfgang von Goethe.
+Create the FIRST LEVEL of exercises based on the section "Zueignung" (Dedication).
+The learning method is contextual inference. The user should infer the missing word using context rather than translation.
+Generate 5 exercises.
+Each exercise must contain:
+* id
+* level
+* source_line (the original line from Faust)
+* text (the sentence with one missing word represented as "____")
+* answer (the missing word)
+* hint_context (a short explanation in Spanish describing the meaning of the sentence)
+* hint_linguistic (a short linguistic hint about grammar or the verb used)
+* hint_letter (first letter of the missing word)
+* note (1–2 sentences explaining an archaic form, poetic structure, or vocabulary)
+Requirements:
+* Choose relatively simple lines from the Zueignung section.
+* Remove only ONE word per exercise.
+* Prefer verbs or meaningful vocabulary.
+* The hints should help inference but should not give the answer directly.
+* The linguistic note should briefly explain archaic German, poetic inversion, or vocabulary differences.
+Return the result ONLY as valid JSON.
+Use the following structure:
+{ "level_id": "faust_zueignung_1", "author": "Johann Wolfgang von Goethe", "book": "Faust Part One", "section": "Zueignung", "exercises": [ { "id": "", "source_line": "", "text": "", "answer": "", "hint_context": "", "hint_linguistic": "", "hint_letter": "", "note": "" } ] }
